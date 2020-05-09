@@ -4,10 +4,12 @@ Vue.use(Vuex);
 
 /* module imports */
 import auth from "./modules/auth/index";
+import config from "./modules/config/index";
 
 export default new Vuex.Store({
   modules: {
-    auth,  // auth module handles all the login,signup stuff
+    config, // config module directs state change to ui implimentation
+    auth, // auth module handles all the login,signup stuff
   },
   state: {
     /* decided to keep endpoints in one file as if changed
@@ -21,14 +23,7 @@ export default new Vuex.Store({
       VAL_TOKEN: "users/api/token/validate/"  // endpoint to validate the active access token
     }
   },
-  getters: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
-  }
-
+  getters: {},
+  mutations: {},
+  actions: {}
 });
