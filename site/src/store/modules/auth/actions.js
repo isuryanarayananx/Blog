@@ -1,12 +1,12 @@
 export default {
-    GET_token({ commit, getters }, payload) {
+    GET_token({ commit, rootGetters }, payload) {
 
         let xhr = new XMLHttpRequest();
 
         let promise = new Promise((resolve, reject) => {
             xhr.open(
                 "POST",
-                getters.GET_endpoints('BASE') + getters.GET_endpoints('GET_TOKEN')
+                rootGetters.endpoints('BASE') + rootGetters.endpoints('GET_TOKEN')
             );
             xhr.setRequestHeader("Content-Type", "Application/json");
             xhr.onload = () => {

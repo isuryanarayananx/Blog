@@ -23,7 +23,13 @@ export default new Vuex.Store({
       VAL_TOKEN: "users/api/token/validate/"  // endpoint to validate the active access token
     }
   },
-  getters: {},
+  getters: {
+    endpoints: (state) => {
+      return (key) => {
+        return state.endpoints[key]
+      }
+    },
+  },
   mutations: {},
   actions: {}
 });

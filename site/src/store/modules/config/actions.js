@@ -1,11 +1,11 @@
 export default {
-    AUTHENTICATION_TEST: ({ getters }) => {
+    AUTHENTICATION_TEST: ({ rootGetters }) => {
         let xhr = new XMLHttpRequest();
 
         let promise = new Promise((resolve, reject) => {
             xhr.open(
                 "GET",
-                getters.GET_endpoints('BASE') + getters.GET_endpoints('VAL_TOKEN')
+                rootGetters.endpoints('BASE') + rootGetters.endpoints('VAL_TOKEN')
             );
             xhr.setRequestHeader("Content-Type", "Application/json");
             xhr.onload = () => {
@@ -19,13 +19,13 @@ export default {
 
         return promise;
     },
-    AUTHORIZATION_TEST: ({ getters }) => {
+    AUTHORIZATION_TEST: ({ rootGetters }) => {
         let xhr = new XMLHttpRequest();
 
         let promise = new Promise((resolve, reject) => {
             xhr.open(
                 "POST",
-                getters.GET_endpoints('BASE') + getters.GET_endpoints('VAL_TOKEN')
+                rootGetters.endpoints('BASE') + rootGetters.endpoints('VAL_TOKEN')
             );
             xhr.setRequestHeader("Content-Type", "Application/json");
             xhr.onload = () => {
