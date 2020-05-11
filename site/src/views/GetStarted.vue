@@ -1,7 +1,7 @@
 <template>
   <div class="getstarted">
     <navbar></navbar>
-    <div class="getstarted_card">
+    <div class="getstarted_auth_card" v-if="!authenticated">
       <div id="login">
         <div id="login_header">
           <h2>Login to your account.</h2>
@@ -22,7 +22,6 @@
 import navbar from "../components/navbar.vue";
 import LoginForm from "../components/LoginForm.vue";
 import RegisterForm from "../components/RegisterForm.vue";
-
 export default {
   name: "getstarted",
   data() {
@@ -34,11 +33,17 @@ export default {
     RegisterForm,
   },
   methods: {},
+
+  computed: {
+    authenticated() {
+      return this.$store.getters["config/GET_authenticated"];
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.getstarted_card {
+.getstarted_auth_card {
   display: grid;
   padding: 10px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

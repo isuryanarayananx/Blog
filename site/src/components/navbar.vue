@@ -7,12 +7,9 @@
   </div>
 </template>
 <script>
-import { mapGetters } from "vuex";
 export default {
   name: "navbar",
-  methods: {
-    ...mapGetters([]),
-  },
+  methods: {},
   components: {},
 };
 </script>

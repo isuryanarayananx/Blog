@@ -5,19 +5,17 @@
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
 export default {
-  methods: {
-    ...mapActions(["ONLOAD"]),
-    onload: function() {
-      this.ONLOAD();
-    },
-  },
+  methods: {},
 
   mounted: function() {
-    /* pre auth validation */
-    this.onload();
-    /* cursor javascript */
+    window.addEventListener("storage", storageEventHandler, false);
+    let that = this;
+    function storageEventHandler(evt) {
+      that.$store.dispatch("config/HANDLER", evt);
+    }
+    this.$store.dispatch("config/AUTH_TEST");
+
     const cursor = document.querySelector(".cursor");
 
     document.addEventListener("mousemove", (e) => {

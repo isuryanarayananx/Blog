@@ -7,9 +7,7 @@ from users.manager import UserManager
 class User(AbstractBaseUser):
 
     email = models.EmailField(_('Email Address'), unique=True)
-    firstName = models.CharField(_('First Name'), max_length=256)
-    lastName = models.CharField(_('Last Name'), max_length=256)
-    nickName = models.CharField(_('Nickname'), max_length=256)
+    nickName = models.CharField(_('Nickname'), blank=True, max_length=256)
     authorization = models.BooleanField(default=False)
 
     is_superuser = models.BooleanField(default=False)

@@ -1,13 +1,18 @@
 export default {
-    AUTHENTICATION_TEST: ({ rootGetters }) => {
+    HANDLER: ({ dispatch }, e) => {
+        if (e.key == "TOKEN") {
+            dispatch("AUTH_TEST")
+        }
+    },
+    AUTH_TEST: ({ getters, rootGetters, commit }) => {
         let xhr = new XMLHttpRequest();
-
         let promise = new Promise((resolve, reject) => {
             xhr.open(
                 "GET",
                 rootGetters.endpoints('BASE') + rootGetters.endpoints('VAL_TOKEN')
             );
             xhr.setRequestHeader("Content-Type", "Application/json");
+            xhr.setRequestHeader("Authorization", "JWT " + getters.GET_token);
             xhr.onload = () => {
                 resolve(xhr);
             };
@@ -17,39 +22,17 @@ export default {
             xhr.send();
         })
 
-        return promise;
-    },
-    AUTHORIZATION_TEST: ({ rootGetters }) => {
-        let xhr = new XMLHttpRequest();
-
-        let promise = new Promise((resolve, reject) => {
-            xhr.open(
-                "POST",
-                rootGetters.endpoints('BASE') + rootGetters.endpoints('VAL_TOKEN')
-            );
-            xhr.setRequestHeader("Content-Type", "Application/json");
-            xhr.onload = () => {
-                resolve(xhr);
-            };
-            xhr.onerror = () => {
-                reject(xhr)
-            }
-            xhr.send();
-        })
-
-        return promise;
-    },
-    LOAD: ({ commit, getters, dispatch }) => {
-        let token = getters.GET_token;
-
-        dispatch("AUTHENTICATION_TEST", token).then((xhr) => {
+        promise.then((xhr) => {
             if (xhr.status == 200) {
-                commit("SET_AUTHENTICATION", true)
-            }
-        });
-        dispatch("AUTHORIZATION_TEST", token).then((xhr) => {
-            if (xhr.status == 200) {
-                commit("SET_AUTHORIZATION", true)
+                console.log(JSON.parse(xhr.response));
+
+                let authentication = JSON.parse(xhr.response).authenticated;
+                commit("SET_AUTHENTICATION", authentication)
+                let authorization = JSON.parse(xhr.response).authorized;
+                commit("SET_AUTHORIZATION", authorization)
+            } else {
+                commit("SET_AUTHENTICATION", false)
+                commit("SET_AUTHORIZATION", false)
             }
         });
     }

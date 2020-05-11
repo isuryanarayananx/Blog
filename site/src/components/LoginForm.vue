@@ -33,6 +33,7 @@
   </div>
 </template>
 <script>
+// import { mapGetters } from "vuex";
 export default {
   name: "navbar",
   components: {},
@@ -43,7 +44,7 @@ export default {
       ERRORS: undefined,
     };
   },
-  computed: {},
+  // computed: { ...mapGetters(["config/GET_authenticated"]) },
   methods: {
     login: function() {
       this.$store
@@ -59,6 +60,7 @@ export default {
     },
   },
   mounted: function() {},
+  computed: {},
 };
 </script>
 <style lang="scss">

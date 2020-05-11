@@ -1,5 +1,5 @@
 export default {
-    GET_token({ commit, rootGetters }, payload) {
+    GET_token({ commit, dispatch, rootGetters }, payload) {
 
         let xhr = new XMLHttpRequest();
 
@@ -24,6 +24,7 @@ export default {
             }
         });
 
+        dispatch("config/AUTH_TEST", {}, { root: true })
         return promise;
     }
 }
