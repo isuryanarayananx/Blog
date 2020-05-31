@@ -4,7 +4,7 @@
     <div class="home-sections" id="home_header">
       <div id="home_header--wrapper">
         <div id="home_header--mainheader">
-          <h1 id="mainheader--h1">theBestBlogEver</h1>
+          <h1>theBestBlogEver</h1>
         </div>
         <div id="home_header--subheader">
           <h3>Blogs you see and go <span>'Oh baby Jesus, thats the best blog I ever seen'</span>.</h3>
@@ -41,10 +41,11 @@ export default {
   align-items:center;
   width:100%;
   flex-direction: column;
+  
   #home_header--wrapper{
 
     #home_header--mainheader{
-      font-size: 130%;
+      font-size: 200%;
     }
 
     #home_header--subheader{

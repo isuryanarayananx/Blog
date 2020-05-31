@@ -9,13 +9,8 @@ export default {
   methods: {},
 
   mounted: function() {
-    window.addEventListener("storage", storageEventHandler, false);
-    let that = this;
-    function storageEventHandler(evt) {
-      that.$store.dispatch("config/HANDLER", evt);
-    }
-    this.$store.dispatch("config/AUTH_TEST");
-
+    this.$store.dispatch("LOAD");
+    
     const cursor = document.querySelector(".cursor");
 
     document.addEventListener("mousemove", (e) => {

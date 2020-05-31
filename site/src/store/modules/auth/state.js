@@ -1,5 +1,1 @@
-export default () => ({
-    tokens: {
-        access: localStorage.getItem("TOKEN")
-    }
-})
+export default () => ({})
