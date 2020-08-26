@@ -5,7 +5,7 @@
     v-bind:class="{ active: isActive }"
     class="nav"
   >
-    |||
+    getStarted
   </div>
 </template>
 <script>
@@ -32,8 +32,12 @@ export default {
 #navbar-button {
   position: absolute;
   z-index: 99999;
+  padding: 10px;
 }
 .active {
-  color: white;
+  color: #42b983;
+}
+.active::before {
+  content: "don't";
 }
 </style>

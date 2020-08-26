@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/isuryanarayanan/.local/share/virtualenvs/Blog-1w-OSmL2/bin/python"
+    "python.pythonPath": "/home/isuryanarayanan/.local/share/virtualenvs/Blog-1w-OSmL2/bin/python",
+    "python.linting.enabled": true
 }
